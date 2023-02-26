@@ -18,15 +18,18 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 export default function save( { attributes } ) {
 	const blockProps = useBlockProps.save();
 
+	const allProps = {
+		...blockProps,
+		style: { backgroundImage: `url(${ attributes.pictureUrl })` },
+	};
 	return (
-		<div { ...blockProps }>
+		<div { ...allProps } data-pictureurl={ attributes.pictureUrl }>
 			<h3>{ attributes.title }</h3>
 			<p>{ attributes.description }</p>
-			<img src={ attributes.pictureUrl } alt={ attributes.title } />
 
 			<div
 				className="square"
-				data-bgColor={attributes.bgColor}
+				data-bgcolor={ attributes.bgColor }
 				style={ {
 					width: '100px',
 					height: '100px',
