@@ -33,11 +33,7 @@ export default function save( { attributes } ) {
 				className="square"
 				data-bgcolor={ attributes.bgColor }
 				style={ {
-					width: '100px',
-					height: '100px',
 					backgroundColor: attributes.bgColor || '#f00',
-					border: '2px solid #333',
-					opacity: 0.1
 				} }
 			/>
 		</div>
