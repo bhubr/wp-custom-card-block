@@ -28,6 +28,8 @@ const MY_TEMPLATE = [
 ];
 import { Placeholder, TextControl } from '@wordpress/components';
 
+import { addBackgroundImageStyle } from './helpers'
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -37,19 +39,21 @@ import { Placeholder, TextControl } from '@wordpress/components';
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-
+	const enhancedProps = addBackgroundImageStyle(useBlockProps(), attributes)
 	return (
-		<div { ...useBlockProps() }>
-			<p>title</p>
-			<TextControl
-				value={ attributes.title }
-				onChange={ ( val ) => setAttributes( { title: val } ) }
-			/>
-			<p>description</p>
-			<TextControl
-				value={ attributes.description }
-				onChange={ ( val ) => setAttributes( { description: val } ) }
-			/>
+		<div { ...enhancedProps }>
+			<div className="overlay">
+				<TextControl
+					value={ attributes.title }
+					onChange={ ( val ) => setAttributes( { title: val } ) }
+				/>
+				<TextControl
+					value={ attributes.description }
+					onChange={ ( val ) =>
+						setAttributes( { description: val } )
+					}
+				/>
+			</div>
 			<p>pictureUrl</p>
 			<TextControl
 				value={ attributes.pictureUrl }
@@ -60,13 +64,11 @@ export default function Edit( { attributes, setAttributes } ) {
 				value={ attributes.bgColor }
 				onChange={ ( val ) => setAttributes( { bgColor: val } ) }
 			/>
-			{/* <img src={attributes.pictureUrl} alt={attributes.title} /> */}
-			<div className="square"
+			{ /* <img src={attributes.pictureUrl} alt={attributes.title} /> */ }
+			<div
+				className="square"
 				style={ {
-					width: '100px',
-					height: '100px',
 					backgroundColor: attributes.bgColor || '#f00',
-					border: '2px solid #333',
 				} }
 			/>
 		</div>

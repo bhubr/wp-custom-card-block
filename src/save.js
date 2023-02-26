@@ -6,6 +6,8 @@
  */
 import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
+import { addBackgroundImageStyle } from './helpers'
+
 /**
  * The save function defines the way in which the different attributes should
  * be combined into the final markup, which is then serialized by the block
@@ -16,14 +18,9 @@ import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
  * @return {WPElement} Element to render.
  */
 export default function save( { attributes } ) {
-	const blockProps = useBlockProps.save();
-
-	const allProps = {
-		...blockProps,
-		style: { backgroundImage: `url(${ attributes.pictureUrl })` },
-	};
+	const enhancedProps = addBackgroundImageStyle(useBlockProps.save(), attributes)
 	return (
-		<div { ...allProps } data-pictureurl={ attributes.pictureUrl }>
+		<div { ...enhancedProps } data-pictureurl={ attributes.pictureUrl }>
 			<div className="overlay">
 				<h3>{ attributes.title }</h3>
 				<p>{ attributes.description }</p>
