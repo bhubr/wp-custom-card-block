@@ -28,8 +28,8 @@
 		"pictureUrl": {
 			"type": "string",
 			"source": "attribute",
-			"selector": "img",
-			"attribute": "src"
+			"selector": "div[data-pictureurl]",
+			"attribute": "data-pictureurl"
 		},
 		"bgColor": {
 			"type": "string",

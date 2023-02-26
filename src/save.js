@@ -24,8 +24,10 @@ export default function save( { attributes } ) {
 	};
 	return (
 		<div { ...allProps } data-pictureurl={ attributes.pictureUrl }>
-			<h3>{ attributes.title }</h3>
-			<p>{ attributes.description }</p>
+			<div className="overlay">
+				<h3>{ attributes.title }</h3>
+				<p>{ attributes.description }</p>
+			</div>
 
 			<div
 				className="square"
@@ -35,6 +37,7 @@ export default function save( { attributes } ) {
 					height: '100px',
 					backgroundColor: attributes.bgColor || '#f00',
 					border: '2px solid #333',
+					opacity: 0.1
 				} }
 			/>
 		</div>
