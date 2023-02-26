@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -21,6 +21,13 @@ import { useBlockProps } from '@wordpress/block-editor';
  */
 import './editor.scss';
 
+const MY_TEMPLATE = [
+	[ 'core/image', {} ],
+	[ 'core/heading', { placeholder: 'Book Title' } ],
+	[ 'core/paragraph', { placeholder: 'Summary' } ],
+];
+import { Placeholder, TextControl } from '@wordpress/components';
+
 /**
  * The edit function describes the structure of your block in the context of the
  * editor. This represents what the editor will render when the block is used.
@@ -29,13 +36,39 @@ import './editor.scss';
  *
  * @return {WPElement} Element to render.
  */
-export default function Edit() {
+export default function Edit( { attributes, setAttributes } ) {
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Wp Custom Card Block – hello from the editor!',
-				'wp-custom-card-block'
-			) }
-		</p>
+		<div { ...useBlockProps() }>
+			<p>title</p>
+			<TextControl
+				value={ attributes.title }
+				onChange={ ( val ) => setAttributes( { title: val } ) }
+			/>
+			<p>description</p>
+			<TextControl
+				value={ attributes.description }
+				onChange={ ( val ) => setAttributes( { description: val } ) }
+			/>
+			<p>pictureUrl</p>
+			<TextControl
+				value={ attributes.pictureUrl }
+				onChange={ ( val ) => setAttributes( { pictureUrl: val } ) }
+			/>
+			<p>bg color</p>
+			<TextControl
+				value={ attributes.bgColor }
+				onChange={ ( val ) => setAttributes( { bgColor: val } ) }
+			/>
+			{/* <img src={attributes.pictureUrl} alt={attributes.title} /> */}
+			<div className="square"
+				style={ {
+					width: '100px',
+					height: '100px',
+					backgroundColor: attributes.bgColor || '#f00',
+					border: '2px solid #333',
+				} }
+			/>
+		</div>
 	);
 }

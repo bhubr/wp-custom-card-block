@@ -4,7 +4,7 @@
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -15,10 +15,25 @@ import { useBlockProps } from '@wordpress/block-editor';
  *
  * @return {WPElement} Element to render.
  */
-export default function save() {
+export default function save( { attributes } ) {
+	const blockProps = useBlockProps.save();
+
 	return (
-		<p { ...useBlockProps.save() }>
-			{ 'Wp Custom Card Block – hello from the saved content!' }
-		</p>
+		<div { ...blockProps }>
+			<h3>{ attributes.title }</h3>
+			<p>{ attributes.description }</p>
+			<img src={ attributes.pictureUrl } alt={ attributes.title } />
+
+			<div
+				className="square"
+				data-bgColor={attributes.bgColor}
+				style={ {
+					width: '100px',
+					height: '100px',
+					backgroundColor: attributes.bgColor || '#f00',
+					border: '2px solid #333',
+				} }
+			/>
+		</div>
 	);
 }

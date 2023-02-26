@@ -13,5 +13,29 @@
 	"textdomain": "wp-custom-card-block",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"style": "file:./style-index.css"
+	"style": "file:./style-index.css",
+	"attributes": {
+		"title": {
+			"type": "string",
+			"source": "html",
+			"selector": "h3"
+		},
+		"description": {
+			"type": "string",
+			"source": "html",
+			"selector": "p"
+		},
+		"pictureUrl": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "img",
+			"attribute": "src"
+		},
+		"bgColor": {
+			"type": "string",
+			"source": "attribute",
+			"selector": "div.square",
+			"attribute": "data-bgColor"
+		}
+	}
 }

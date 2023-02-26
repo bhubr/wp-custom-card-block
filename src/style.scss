@@ -6,7 +6,15 @@
  */
 
 .wp-block-create-block-wp-custom-card-block {
-	background-color: #21759b;
-	color: #fff;
+	border-radius: 3px;
+	border: 1px solid #f4f4f4;
+	// background-color: #21759b;
+	color: #555;
 	padding: 2px;
+}
+
+
+.wp-block-create-block-wp-custom-card-block h3 {
+	// background-color: #21759b;
+	margin: 0 0 0.5em 0;
 }
