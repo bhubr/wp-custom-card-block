@@ -61,17 +61,28 @@ export default function Edit( { attributes, setAttributes } ) {
 			{ isEditingPictureUrl && (
 				<div className="editModal">
 					<div className="editPictureButton">
-						<button type="button" onClick={ toggleIsEditingPictureUrl }>
+						<button
+							type="button"
+							onClick={ toggleIsEditingPictureUrl }
+						>
 							<Icon icon="no" size="24" />
 						</button>
 					</div>
-					<TextControl
-						name="inputPictureUrl"
-						value={ attributes.pictureUrl }
-						onChange={ ( val ) =>
-							setAttributes( { pictureUrl: val } )
-						}
-					/>
+					<div className="flex">
+						<TextControl
+							name="inputPictureUrl"
+							value={ attributes.pictureUrl }
+							onChange={ ( val ) =>
+								setAttributes( { pictureUrl: val } )
+							}
+						/>
+						<button
+							type="button"
+							onClick={ toggleIsEditingPictureUrl }
+						>
+							<Icon icon="yes" size="24" />
+						</button>
+					</div>
 				</div>
 			) }
 			<div className="overlay">
@@ -88,18 +99,6 @@ export default function Edit( { attributes, setAttributes } ) {
 					}
 				/>
 			</div>
-			<p>bg color</p>
-			<TextControl
-				value={ attributes.bgColor }
-				onChange={ ( val ) => setAttributes( { bgColor: val } ) }
-			/>
-			{ /* <img src={attributes.pictureUrl} alt={attributes.title} /> */ }
-			<div
-				className="square"
-				style={ {
-					backgroundColor: attributes.bgColor || '#f00',
-				} }
-			/>
 		</div>
 	);
 }

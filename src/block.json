@@ -30,12 +30,6 @@
 			"source": "attribute",
 			"selector": "div[data-pictureurl]",
 			"attribute": "data-pictureurl"
-		},
-		"bgColor": {
-			"type": "string",
-			"source": "attribute",
-			"selector": "div.square",
-			"attribute": "data-bgcolor"
 		}
 	},
     "example": {
