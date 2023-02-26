@@ -37,5 +37,11 @@
 			"selector": "div.square",
 			"attribute": "data-bgcolor"
 		}
-	}
+	},
+    "example": {
+        "attributes": {
+            "title": "Hello World",
+            "description": "Put a description here"
+        }
+    }
 }

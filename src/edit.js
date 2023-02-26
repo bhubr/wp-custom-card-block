@@ -26,9 +26,11 @@ const MY_TEMPLATE = [
 	[ 'core/heading', { placeholder: 'Book Title' } ],
 	[ 'core/paragraph', { placeholder: 'Summary' } ],
 ];
-import { Placeholder, TextControl } from '@wordpress/components';
+import { Placeholder, Icon, TextControl } from '@wordpress/components';
 
-import { addBackgroundImageStyle } from './helpers'
+import { useState } from 'react';
+import { addBackgroundImageStyle } from './helpers';
+import PenIcon from './PenIcon';
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -39,26 +41,53 @@ import { addBackgroundImageStyle } from './helpers'
  * @return {WPElement} Element to render.
  */
 export default function Edit( { attributes, setAttributes } ) {
-	const enhancedProps = addBackgroundImageStyle(useBlockProps(), attributes)
+	const [ isEditingPictureUrl, setIsEditingPictureUrl ] = useState( false );
+	const enhancedProps = addBackgroundImageStyle(
+		useBlockProps(),
+		attributes
+	);
+
+	const toggleIsEditingPictureUrl = () =>
+		setIsEditingPictureUrl( ( x ) => ! x );
 	return (
 		<div { ...enhancedProps }>
+			<div className="editPictureButton">
+				<button type="button" onClick={ toggleIsEditingPictureUrl }>
+					<span>Change picture</span>
+					<Icon icon="edit" size="24" />
+					{ /* <PenIcon /> */ }
+				</button>
+			</div>
+			{ isEditingPictureUrl && (
+				<div className="editModal">
+					<div className="editPictureButton">
+						<button type="button" onClick={ toggleIsEditingPictureUrl }>
+							<Icon icon="no" size="24" />
+						</button>
+					</div>
+					<TextControl
+						name="inputPictureUrl"
+						value={ attributes.pictureUrl }
+						onChange={ ( val ) =>
+							setAttributes( { pictureUrl: val } )
+						}
+					/>
+				</div>
+			) }
 			<div className="overlay">
 				<TextControl
+					name="inputTitle"
 					value={ attributes.title }
 					onChange={ ( val ) => setAttributes( { title: val } ) }
 				/>
 				<TextControl
+					name="inputDescription"
 					value={ attributes.description }
 					onChange={ ( val ) =>
 						setAttributes( { description: val } )
 					}
 				/>
 			</div>
-			<p>pictureUrl</p>
-			<TextControl
-				value={ attributes.pictureUrl }
-				onChange={ ( val ) => setAttributes( { pictureUrl: val } ) }
-			/>
 			<p>bg color</p>
 			<TextControl
 				value={ attributes.bgColor }

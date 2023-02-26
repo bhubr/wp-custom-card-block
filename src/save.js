@@ -19,6 +19,7 @@ import { addBackgroundImageStyle } from './helpers'
  */
 export default function save( { attributes } ) {
 	const enhancedProps = addBackgroundImageStyle(useBlockProps.save(), attributes)
+	console.log('>> save', attributes, enhancedProps)
 	return (
 		<div { ...enhancedProps } data-pictureurl={ attributes.pictureUrl }>
 			<div className="overlay">

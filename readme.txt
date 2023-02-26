@@ -50,6 +50,8 @@ directory take precedence. For example, `/assets/screenshot-1.png` would win ove
 
 == Arbitrary section ==
 
-You may provide arbitrary sections, in the same format as the ones above. This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation." Arbitrary sections will be shown below the built-in sections outlined above.
+* Icon component:
+
+    * [Handbook](https://developer.wordpress.org/block-editor/reference-guides/components/icon/)
+    * [Storybook](https://wordpress.github.io/gutenberg/?path=/docs/components-icon--default)
+    * [Dashicons](https://developer.wordpress.org/resource/dashicons/#admin-site-alt) for a reference of available icons

@@ -8,8 +8,6 @@
 .wp-block-create-block-wp-custom-card-block {
 	position: relative;
 	border-radius: 3px;
-	// border: 1px solid #f4f4f4;
-	// background-color: #21759b;
 	padding: 4em 2em 1.25em 1em;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -32,7 +30,8 @@
 	margin-left: .25em;
 }
 
-.wp-block-create-block-wp-custom-card-block h3 {
+.wp-block-create-block-wp-custom-card-block h3,
+.wp-block-create-block-wp-custom-card-block input[name="inputTitle"] {
 	font-size: 1.3rem;
 	font-weight: 500;
 	margin: 0 0 0.5em 0;
@@ -41,4 +40,59 @@
 .wp-block-create-block-wp-custom-card-block p {
 	margin: 0;
 	font-size: 14px;
+}
+
+.wp-block-create-block-wp-custom-card-block .components-text-control__input {
+	background: rgba(0, 0, 0, 0.1);
+	color: #fff;
+	border: none;
+}
+
+.wp-block-create-block-wp-custom-card-block .components-text-control__input:focus {
+	background: rgba(0, 0, 0, 0.4);
+	color: #fff;
+	border: none;
+}
+
+.wp-block-create-block-wp-custom-card-block.no-bg-picture {
+	// background-color: #e5e5f7;
+	background-color: #c5c5c7;
+	background-image:  repeating-linear-gradient(45deg, #444cf7 25%, transparent 25%, transparent 75%, #444cf7 75%, #444cf7), repeating-linear-gradient(45deg, #444cf7 25%, #e5e5f7 25%, #e5e5f7 75%, #444cf7 75%, #444cf7);
+	background-position: 0 0, 10px 10px;
+	background-size: 20px 20px;
+	background-repeat: repeat;
+}
+
+.wp-block-create-block-wp-custom-card-block .editPictureButton {
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+	display: flex;
+	align-items: center;
+}
+
+.wp-block-create-block-wp-custom-card-block .editPictureButton span {
+	font-size: 12px;
+}
+
+.wp-block-create-block-wp-custom-card-block .editPictureButton button {
+	padding: 0;
+	background: transparent;
+	border: none; 
+}
+
+.wp-block-create-block-wp-custom-card-block .editModal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.wp-block-create-block-wp-custom-card-block .editModal .components-base-control {
+	width: 85%;
 }
